@@ -10,7 +10,7 @@ services:
       MYSQL_USER: ant
       MYSQL_PASSWORD: 123456
     ports:
-      - 13306:3306
+      - 23306:3306
     volumes:
       - ./data/mysql/:/var/lib/mysql/:cached
       - ./logs/mysql/:/var/log/mysql/:cached
@@ -47,7 +47,7 @@ services:
       - ant-boot:ant-boot-link
       - ant-lowcode-ui:ant-lowcode-ui-link
     ports:
-      - 1080:80
+      - 2080:80
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./logs/nginx/:/var/log/nginx/
