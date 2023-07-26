@@ -1,0 +1,61 @@
+version: "3.8"
+services:
+  mysql:
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot-mysql:0.0.2
+    restart: on-failure
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: ant_framework
+      MYSQL_USER: ant
+      MYSQL_PASSWORD: 123456
+    ports:
+      - 13306:3306
+    volumes:
+      - ./data/mysql/:/var/lib/mysql/:cached
+      - ./logs/mysql/:/var/log/mysql/:cached
+      - ./data/sql/:/sql/:cached
+  ant-boot:
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.2
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+      WAIT_HOSTS: mysql:3306
+      WAIT_HOSTS_TIMEOUT: 120
+      WAIT_SLEEP_INTERVAL: 10
+      WAIT_HOST_CONNECT_TIMEOUT: 10
+    stdin_open: true
+    tty: true
+    privileged: true
+    depends_on:
+      - mysql
+    links:
+      - mysql:database-link
+    volumes:
+      - ant-boot-files:/opt/ant/ant-boot/files/
+      - ./logs/ant-boot/:/opt/ant/ant-boot/logs/
+  ant-lowcode-ui:
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.2
+    depends_on:
+      - ant-boot
+  nginx:
+    image: nginx:1.25
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+    links:
+      - ant-boot:ant-boot-link
+      - ant-lowcode-ui:ant-lowcode-ui-link
+    ports:
+      - 1080:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./logs/nginx/:/var/log/nginx/
+volumes:
+  ant-boot-files:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ${PWD}/data/files/
+
