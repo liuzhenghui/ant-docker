@@ -1,18 +1,9 @@
 version: "3.8"
 
-include:
-  - ../docker-compose.base.yml
 services:
   mysql:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot-mysql:0.0.2
     ports:
       - 23306:3306
-  ant-boot:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.2
-  ant-lowcode-ui:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.2
-    depends_on:
-      - ant-boot
   nginx:
     ports:
       - 2080:80
