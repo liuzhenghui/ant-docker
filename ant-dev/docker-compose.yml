@@ -27,8 +27,6 @@ services:
     stdin_open: true
     tty: true
     privileged: true
-    depends_on:
-      - mysql
     links:
       - mysql:database-link
     volumes:
@@ -36,8 +34,6 @@ services:
       - ./logs/ant-boot/:/opt/ant/ant-boot/logs/
   ant-lowcode-ui:
     image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.5
-    depends_on:
-      - ant-boot
   nginx:
     image: nginx:1.25
     restart: always
