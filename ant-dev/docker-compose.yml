@@ -30,7 +30,7 @@ services:
     links:
       - mysql:database-link
     volumes:
-      - ant-boot-files:/opt/ant/ant-boot/files/
+      - dev-ant-boot-files:/opt/ant/ant-boot/files/
       - ./logs/ant-boot/:/opt/ant/ant-boot/logs/
   ant-lowcode-ui:
     image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.5
@@ -48,7 +48,7 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./logs/nginx/:/var/log/nginx/
 volumes:
-  ant-boot-files:
+  dev-ant-boot-files:
     driver: local
     driver_opts:
       o: bind
