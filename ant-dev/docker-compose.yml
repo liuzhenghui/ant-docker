@@ -16,7 +16,7 @@ services:
       - ./logs/mysql/:/var/log/mysql/:cached
       - ./data/sql/:/sql/:cached
   ant-boot:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.4
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.5
     restart: always
     environment:
       TZ: Asia/Shanghai
@@ -35,7 +35,7 @@ services:
       - ant-boot-files:/opt/ant/ant-boot/files/
       - ./logs/ant-boot/:/opt/ant/ant-boot/logs/
   ant-lowcode-ui:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.4
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.5
     depends_on:
       - ant-boot
   nginx:
