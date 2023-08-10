@@ -33,7 +33,7 @@ services:
       - dev-ant-boot-files:/opt/ant/ant-boot/files/
       - ./logs/ant-boot/:/opt/ant/ant-boot/logs/
   ant-lowcode-ui:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.10
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.10.1
   nginx:
     image: nginx:1.25
     restart: always
