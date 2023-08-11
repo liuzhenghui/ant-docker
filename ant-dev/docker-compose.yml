@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mysql:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot-mysql:0.0.10
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot-mysql:0.0.11
     restart: always
     environment:
       TZ: Asia/Shanghai
@@ -16,7 +16,7 @@ services:
       - ./logs/mysql/:/var/log/mysql/:cached
       - ./data/sql/:/sql/:cached
   ant-boot:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.10
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.11
     restart: always
     environment:
       TZ: Asia/Shanghai
@@ -33,7 +33,7 @@ services:
       - dev-ant-boot-files:/opt/ant/ant-boot/files/
       - ./logs/ant-boot/:/opt/ant/ant-boot/logs/
   ant-lowcode-ui:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.10.1
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.11
   nginx:
     image: nginx:1.25
     restart: always
