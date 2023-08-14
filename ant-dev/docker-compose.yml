@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mysql:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot-mysql:0.0.11
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot-mysql:0.0.12
     restart: always
     environment:
       TZ: Asia/Shanghai
@@ -16,7 +16,7 @@ services:
       - ./logs/mysql/:/var/log/mysql/:cached
       - ./data/sql/:/sql/:cached
   ant-boot:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.11.1
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.12
     restart: always
     environment:
       TZ: Asia/Shanghai
@@ -29,6 +29,8 @@ services:
     privileged: true
     links:
       - mysql:database-link
+    ports:
+      - 28889:8889
     volumes:
       - dev-ant-boot-files:/opt/ant/ant-boot/files/
       - ./logs/ant-boot/:/opt/ant/ant-boot/logs/
