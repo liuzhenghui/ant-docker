@@ -31,8 +31,8 @@ services:
       - mysql:database-link
     volumes:
       - dev-ant-boot-files:/opt/ant/ant-boot/files/
-      - ./bin/ant-boot/:/opt/ant/ant-boot/bin/
       - ./logs/ant-boot/:/opt/ant/ant-boot/logs/
+      - ./debug/:/opt/ant/ant-boot/debug/
   ant-lowcode-ui:
     image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.11
   nginx:
