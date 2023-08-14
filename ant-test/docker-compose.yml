@@ -16,7 +16,7 @@ services:
       - ./logs/mysql/:/var/log/mysql/:cached
       - ./data/sql/:/sql/:cached
   ant-boot:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.11
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.11.1
     restart: always
     environment:
       TZ: Asia/Shanghai
@@ -30,7 +30,8 @@ services:
     links:
       - mysql:database-link
     volumes:
-      - test-ant-boot-files:/opt/ant/ant-boot/files/
+      - dev-ant-boot-files:/opt/ant/ant-boot/files/
+      - ./bin/ant-boot/:/opt/ant/ant-boot/bin/
       - ./logs/ant-boot/:/opt/ant/ant-boot/logs/
   ant-lowcode-ui:
     image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-lowcode-ui:0.0.11
