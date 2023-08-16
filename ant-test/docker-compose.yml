@@ -30,7 +30,7 @@ services:
     links:
       - mysql:database-link
     volumes:
-      - dev-ant-boot-files:/opt/ant/ant-boot/files/
+      - test-ant-boot-files:/opt/ant/ant-boot/files/
       - ./logs/ant-boot/:/opt/ant/ant-boot/logs/
       - ./debug/:/opt/ant/ant-boot/debug/
   ant-lowcode-ui:
