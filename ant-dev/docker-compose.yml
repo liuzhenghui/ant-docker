@@ -27,6 +27,8 @@ services:
     stdin_open: true
     tty: true
     privileged: true
+    extra_hosts:
+      - host.docker.internal:host-gateway
     links:
       - mysql:database-link
     ports:
