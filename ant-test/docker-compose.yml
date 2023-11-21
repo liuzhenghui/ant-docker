@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mysql:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot-mysql:0.0.12
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot-mysql:0.0.11
     restart: always
     environment:
       TZ: Asia/Shanghai
@@ -16,7 +16,7 @@ services:
       - ./logs/mysql/:/var/log/mysql/:cached
       - ./data/sql/:/sql/:cached
   ant-boot:
-    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.13
+    image: registry.cn-guangzhou.aliyuncs.com/ant-base/ant-boot:0.0.11.1
     restart: always
     environment:
       TZ: Asia/Shanghai
